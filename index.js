@@ -29,6 +29,6 @@ app.get('/', async (req, res) => {
 	res.sendFile(path.join(__dirname, `\\generated\\image.png`));
 });
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
 	console.log('now listening for requests on port 5000');
 });
