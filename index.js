@@ -15,7 +15,9 @@ app.get('/', async (req, res) => {
 	console.log(hashtags);
 	contentHtml = contentHtml.replace('Description', message);
 	fs.writeFileSync('design/sampleOut.html', contentHtml);
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({
+		args: ['--no-sandbox', '--disable-setuid-sandbox'],
+	});
 	const page = await browser.newPage();
 	await page.setViewport({
 		width: 1080,
